@@ -15,7 +15,6 @@ def clean_messages(config, days):
             msg_date = parser.isoparse(msg['date']).astimezone(timezone.utc)
             if msg_date < cmp_date:
                 r.delete(f"{config['gotify_url']}/message/{msg['id']}", headers={"X-Gotify-Key": config['gotify_client_key']})
-                print("delete")
             
         if data['paging']['size'] < data['paging']['limit']:
             # print("size < limit")
